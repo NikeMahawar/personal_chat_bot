@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, request, send_file
 import openai
 
-OPENAI_API_KEY = "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"
+OPENAI_API_KEY = "Your_OPENAI_API_KEY"
 
 app = Flask(__name__)
 
