@@ -21,17 +21,14 @@ def get_chatbot_response(user_input):
         stop=["\nUser:", "\nBot:"],
     )
 
-    # Extract the response from the API response
     chatbot_response = response["choices"][0]["text"].strip()
 
     return chatbot_response
 
-# Home route to render the chat UI
 @app.route('/')
 def home():
     return render_template('index.html', chat_history=chat_history)
 
-# Route to handle user input and chatbot response
 @app.route('/chat', methods=['POST'])
 def chat():
     user_input = request.form['user_input']
@@ -40,7 +37,6 @@ def chat():
     chat_history.append({'bot': bot_response})
     return render_template('index.html', chat_history=chat_history)
 
-# Route to serve the HTML file from the templates directory
 @app.route('/index.html')
 def get_html():
     return send_file('templates/index.html')
